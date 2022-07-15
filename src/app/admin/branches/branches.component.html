@@ -1,0 +1,39 @@
+<app-homepage>
+  <div class="row">
+    <h4 class="page-title">Branches</h4>
+    <div class="row" style="overflow-x: auto">
+      <table class="table table-responsive table-bordered table-striped table-hover align-self-center table-sm text-center"
+             datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+        <thead class="table-secondary">
+        <tr>
+          <th class="text-nowrap">#</th>
+          <th class="text-nowrap">Name</th>
+          <th class="text-nowrap">Created Date</th>
+          <th class="text-nowrap">Status</th>
+          <th class="text-nowrap">Settings</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let branch of branches">
+          <td>{{branch.id}}</td>
+          <td>{{branch.name}}</td>
+          <td>{{branch.createdDate}}</td>
+          <td>
+            <div class="d-flex justify-content-center form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" [checked]="branch.status" onclick="return false;">
+            </div>
+          </td>
+          <td>
+            <a href="/settings/branches/{{branch.id}}" class="btn px-2 py-0 me-2 bg-success text-light text-decoration-none">
+              <i class="fas fa-pencil-alt"></i>
+            </a>
+            <a href="" class="btn px-2 py-0 bg-danger text-light text-decoration-none">
+              <i class="fas fa-trash"></i>
+            </a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</app-homepage>

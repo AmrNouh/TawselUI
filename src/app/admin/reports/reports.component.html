@@ -1,0 +1,89 @@
+<app-homepage>
+  <div class="row">
+    <h4 class="page-title">Reports</h4>
+    <form [formGroup]="searchForm" (ngSubmit)="onSearch()" class="row">
+      <div class="col-10 col-sm-8 col-lg-3 my-2">
+        <label class="form-label" for="status">Status</label>
+        <select formControlName="orderStatus"
+                [ngClass]="{'is-invalid': submitted && OrderStatus?.errors,
+                'is-valid': !OrderStatus?.errors}"
+                class="form-select "
+                id="status" name="status" required>
+          <!--ngfor here-->
+          <option value="0" selected>Please Select Status</option>
+        </select>
+        <div *ngIf="OrderStatus?.invalid && (OrderStatus?.dirty || OrderStatus?.touched)" class="text-danger">
+          <div *ngIf="OrderStatus?.errors?.['required']">
+            Order Status is required.
+          </div>
+        </div>
+      </div>
+      <div class="col-10 col-sm-8 col-lg-3 my-2">
+        <label class="form-label" for="from">From</label>
+        <input formControlName="fromDate" type="date" id="from" class="form-control" required
+               [ngClass]="{'is-invalid': submitted && FromData?.errors,
+                'is-valid': !FromData?.errors}">
+        <div *ngIf="FromData?.invalid && (FromData?.dirty || FromData?.touched)" class="text-danger">
+          <div *ngIf="FromData?.errors?.['required']">
+            From Date is required.
+          </div>
+        </div>
+      </div>
+      <div class="col-10 col-sm-8 col-lg-3 my-2">
+        <label class="form-label" for="to">To</label>
+        <input formControlName="toDate" type="date" id="to" class="form-control" required
+               [ngClass]="{'is-invalid': submitted && ToDate?.errors,
+                'is-valid': !ToDate?.errors}">
+        <div *ngIf="ToDate?.invalid && (ToDate?.dirty || ToDate?.touched)" class="text-danger">
+          <div *ngIf="ToDate?.errors?.['required']">
+            To Date is required.
+          </div>
+        </div>
+      </div>
+      <div class="col-10 col-sm-8 col-lg-3 align-self-center pt-4">
+        <button class="btn btn-primary" type="submit">Search</button>
+      </div>
+    </form>
+    <div class="row w-75 my-5" style="overflow-x: auto">
+      <table class="table table-responsive table-bordered table-striped table-hover align-self-center table-sm"
+             datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+        <thead class="table-secondary">
+        <tr>
+          <th class="text-nowrap">#</th>
+          <th class="text-nowrap">Serial number</th>
+          <th class="text-nowrap">Status</th>
+          <th class="text-nowrap">Trader</th>
+          <th class="text-nowrap">Customer</th>
+          <th class="text-nowrap">Phone number</th>
+          <th class="text-nowrap">Government</th>
+          <th class="text-nowrap">City</th>
+          <th class="text-nowrap">Order cost</th>
+          <th class="text-nowrap">Received amount</th>
+          <th class="text-nowrap">Shipping cost</th>
+          <th class="text-nowrap">Paid shipping value</th>
+          <th class="text-nowrap">Company value</th>
+          <th class="text-nowrap">Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let report of allReports">
+          <td>{{report.id}}</td>
+          <td>{{report.serialNumber}}</td>
+          <td>{{report.status}}</td>
+          <td>{{report.traderName}}</td>
+          <td>{{report.customerName}}</td>
+          <td>{{report.phoneNumber}}</td>
+          <td>{{report.government}}</td>
+          <td>{{report.city}}</td>
+          <td>{{report.orderCost}}</td>
+          <td>{{report.receivedAmount}}</td>
+          <td>{{report.shippingCost}}</td>
+          <td>{{report.paidShippingAmount}}</td>
+          <td>{{report.companyValue}}</td>
+          <td>{{report.date}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</app-homepage>

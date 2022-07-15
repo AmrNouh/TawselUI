@@ -1,0 +1,128 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600&display=swap');
+
+*, :after, :before {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: var(--ct-body-font-family);
+  font-size: var(--ct-body-font-size);
+  font-weight: var(--ct-body-font-weight);
+  line-height: var(--ct-body-line-height);
+  color: var(--ct-body-color);
+  background-color: var(--ct-body-bg);
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+:root {
+  --ct-blue: #2c8ef8;
+  --ct-indigo: #727cf5;
+  --ct-purple: #6b5eae;
+  --ct-pink: #ff679b;
+  --ct-red: #fa5c7c;
+  --ct-orange: #fd7e14;
+  --ct-yellow: #ffbc00;
+  --ct-green: #0acf97;
+  --ct-teal: #02a8b5;
+  --ct-cyan: #39afd1;
+  --ct-white: #fff;
+  --ct-gray: #98a6ad;
+  --ct-gray-dark: #343a40;
+  --ct-gray-100: #f1f3fa;
+  --ct-gray-200: #eef2f7;
+  --ct-gray-300: #dee2e6;
+  --ct-gray-400: #ced4da;
+  --ct-gray-500: #adb5bd;
+  --ct-gray-600: #98a6ad;
+  --ct-gray-700: #6c757d;
+  --ct-gray-800: #343a40;
+  --ct-gray-900: #313a46;
+  --ct-primary: #727cf5;
+  --ct-secondary: #6c757d;
+  --ct-success: #0acf97;
+  --ct-info: #39afd1;
+  --ct-warning: #ffbc00;
+  --ct-danger: #fa5c7c;
+  --ct-light: #eef2f7;
+  --ct-dark: #313a46;
+  --ct-primary-rgb: 114,124,245;
+  --ct-secondary-rgb: 108,117,125;
+  --ct-success-rgb: 10,207,151;
+  --ct-info-rgb: 57,175,209;
+  --ct-warning-rgb: 255,188,0;
+  --ct-danger-rgb: 250,92,124;
+  --ct-light-rgb: 238,242,247;
+  --ct-dark-rgb: 49,58,70;
+  --ct-white-rgb: 255,255,255;
+  --ct-black-rgb: 0,0,0;
+  --ct-body-color-rgb: 108,117,125;
+  --ct-body-bg-rgb: 250,251,254;
+  --ct-font-sans-serif: "Nunito",sans-serif;
+  --ct-font-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+  --ct-gradient: linear-gradient(180deg,hsla(0,0%,100%,0.15),hsla(0,0%,100%,0));
+  --ct-body-font-family: Nunito,sans-serif;
+  --ct-body-font-size: 0.9rem;
+  --ct-body-font-weight: 400;
+  --ct-body-line-height: 1.5;
+  --ct-body-color: #6c757d;
+  --ct-body-bg: #fafbfe;
+  --ct-bg-leftbar-gradient: linear-gradient(135deg,#8f75da,#727cf5 60%);
+  --ct-input-color: #6c757d;
+  --ct-box-shadow: 0px 0px 35px 0px rgba(154,161,171,0.15);
+  --ct-bg-topbar: #fff;
+  --sidemenu-lg-width: 250px;
+  --sidemenu-md-width: 70px;
+  --sidemenu-font-size: 1.15rem;
+  --ct-menu-item: #cedce4;
+  --ct-menu-item-hover: #fff;
+  --ct-menu-item-active: #fff;
+  --header-height: 70px;
+
+}
+
+label {
+  --ct-text-opacity: 1;
+  color: #98a6ad;
+}
+
+.btn-primary {
+  box-shadow: 0 2px 6px 0 rgb(114 124 245 / 50%);
+  color: #fff;
+  background-color: #727cf5;
+  border-color: #727cf5;
+  font-size: .9rem;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 0.45rem 0.9rem;
+  font-size: .95rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #6c757d;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #dee2e6;
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 0.25rem;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.page-title {
+  font-size: 18px;
+  margin: 0;
+  line-height: 75px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #6c757d;
+  font-weight: 700;
+}

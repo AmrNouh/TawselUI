@@ -1,0 +1,50 @@
+<app-settings>
+  <div class="container">
+    <div class="col-12 row gap-2">
+      <button class="col btn btn-primary">All Privileges</button>
+      <button class="col btn">Private Custom</button>
+    </div>
+    <form class="col-12 row justify-content-center my-5">
+      <div class="input-group w-75 flex-nowrap mx-4 d-lg-flex d-none align-self-center">
+        <input type="text" class="form-control" placeholder="Group Name">
+        <button class="btn btn-primary">Save</button>
+      </div>
+    </form>
+    <div class="container">
+      <table class="table table-responsive table-bordered table-striped table-hover align-self-center table-sm text-center"
+             datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+        <thead class="table-secondary">
+        <tr>
+          <th class="text-nowrap">
+            <input class="form-check-inline" type="checkbox">
+          </th>
+          <th class="text-nowrap">Page</th>
+          <th class="text-nowrap">Add</th>
+          <th class="text-nowrap">Delete</th>
+          <th class="text-nowrap">Edit</th>
+          <th class="text-nowrap">View</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let page of pages">
+          <td>
+            <input class="form-check" type="checkbox">
+          </td>
+          <td>{{page.name}}</td>
+          <td>
+            <input class="form-check" type="checkbox">
+          </td>
+          <td>
+            <input class="form-check" type="checkbox">
+          </td>
+          <td>
+            <input class="form-check" type="checkbox">
+          </td>
+          <td>
+            <input class="form-check" type="checkbox">
+          </td>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</app-settings>

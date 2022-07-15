@@ -1,0 +1,31 @@
+.fas {
+  font-size: 1.125rem;
+}
+
+.fa-shipping-fast {
+  font-size: 28px;
+  color: var(--ct-gray-200);
+}
+.hr-line {
+  color: var(--ct-gray-500);
+}
+
+.side-menu-item {
+  color: var(--ct-menu-item);
+  position: relative;
+  transition: all .4s;
+  list-style: none;
+  letter-spacing: 1px;
+}
+
+.side-menu-item:active {
+  color: var(--ct-menu-item-active);
+
+}
+
+.side-menu-item:hover {
+  color: var(--ct-menu-item-hover);
+}
+.side-menu-text {
+  font-size: var(--sidemenu-font-size);
+}

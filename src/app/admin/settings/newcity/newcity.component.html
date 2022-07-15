@@ -1,0 +1,53 @@
+<app-settings>
+  <div class="container">
+    <h4 class="page-title">New City</h4>
+    <form class="row w-100" [formGroup]="newCityForm" (ngSubmit)="createNewCity()">
+      <div class="col-12 my-3">
+        <label for="government">Government</label>
+        <select class="form-select" formControlName="government" id="government"
+                [ngClass]="{'is-invalid': submitted && government?.errors,
+                'is-valid': !government?.errors}" required>
+          <option *ngFor="let government of governments" [value]="government.id">
+            {{government.name}}
+          </option>
+        </select>
+        <div *ngIf="government?.invalid && (government?.dirty || government?.touched)" class="text-danger">
+          <div *ngIf="government?.errors?.['required']">
+            please select government
+          </div>
+        </div>
+      </div>
+      <div class="col-12 my-3">
+        <label for="cityName">Name</label>
+        <input formControlName="name" type="text" name="name" id="cityName" class="form-control"
+               [ngClass]="{'is-invalid': submitted && name?.errors,
+                'is-valid': !name?.errors}" required>
+        <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="text-danger">
+          <div *ngIf="name?.errors?.['required']">
+            name is required.
+          </div>
+          <div *ngIf="name?.errors?.['minlength']">
+            name length must be greater than 3 characters.
+          </div>
+          <div *ngIf="name?.errors?.['pattern']">
+            invalid name.
+          </div>
+        </div>
+      </div>
+      <div class="col-12 my-3">
+        <label for="shippingCost">Shipping Cost</label>
+        <input formControlName="shippingCost" type="number" name="shippingCost" id="shippingCost" class="form-control"
+               [ngClass]="{'is-invalid': submitted && shippingCost?.errors,
+                'is-valid': !shippingCost?.errors}" required>
+        <div *ngIf="shippingCost?.invalid && (shippingCost?.dirty || shippingCost?.touched)" class="text-danger">
+          <div *ngIf="shippingCost?.errors?.['required']">
+            shipping cost is required.
+          </div>
+        </div>
+      </div>
+      <div class="col-12 my-3 d-block">
+        <button class="btn btn-primary" type="submit">Search</button>
+      </div>
+    </form>
+  </div>
+</app-settings>

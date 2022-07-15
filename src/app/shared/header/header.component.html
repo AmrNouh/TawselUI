@@ -1,0 +1,127 @@
+<nav class="d-flex align-items-center align-content-between justify-content-between">
+
+  <div class="d-flex align-items-center align-content-between justify-content-between align-self-center float-start">
+    <!--  toggle button-->
+    <button class="toggle-button" type="button" data-toggle="collapse" data-target="#sidebarToggler"
+            aria-controls="sidebarToggler" aria-expanded="false" aria-label="Toggle navigation" (click)="changeWidth()">
+      <i class="fas fa-bars"></i>
+    </button>
+    <!--  End toggle button-->
+
+    <!--  Search Bar-->
+    <div class="input-group flex-nowrap mx-4 d-lg-flex d-none">
+      <div class="search-container d-flex align-items-center">
+        <i class="fas fa-search me-2"></i>
+        <input type="text" class="input-search border-0 bg-transparent" placeholder="Search...">
+      </div>
+      <div class="input-group-append">
+        <button class="btn btn-primary">
+          Search
+        </button>
+      </div>
+    </div>
+    <!--  End Search Bar-->
+  </div>
+  <!--  nav Content-->
+  <div class="float-end mb-0 d-flex flex-row flex-nowrap">
+    <!--    Search Icon-->
+    <div class="dropdown align-self-center d-xl-none">
+      <button class="btn" id="searchDdwn" type="button" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+        <i class="fas fa-search"></i>
+      </button>
+      <div class="dropdown-menu animate slideIn" style="width: 300px" aria-labelledby="searchDdwn">
+        <form class="p-3"><input type="text" class="form-control" placeholder="Search ..."></form>
+      </div>
+    </div>
+    <!--    End Search Icon-->
+
+    <!--    language Switch-->
+    <div class="dropdown align-self-center">
+      <a class="nav-link dropdown-toggle" id="lngdwn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <img src="../../../assets/images/united-states.png" alt="English" class="me-0 me-sm-1" height="20">
+        <span>English</span>
+      </a>
+      <div class="dropdown-menu animate slideIn" aria-labelledby="lngdwn">
+        <a class="nav-link ">
+          <img src="../../../assets/images/egypt.png" alt="Arabic" class="me-0 me-sm-1" height="20">
+          <span>Arabic</span>
+        </a>
+      </div>
+    </div>
+    <!--    End language Switch-->
+
+    <!--    notification alert-->
+    <div class="dropdown align-self-center">
+      <a class="nav-link" id="notificationdwn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-bell fs-5"></i>
+      </a>
+      <div class="dropdown-menu notifications  animate slideIn" aria-labelledby="notificationdwn">
+        <h2>Notifications - <span>2</span></h2>
+        <div class="notifications-item"><img src="https://i.imgur.com/uIgDDDd.jpg" alt="img">
+          <div class="text">
+            <h4 class="text-nowrap">Samso aliao</h4>
+            <p class="">Samso Nagaro Like your home work</p>
+          </div>
+        </div>
+        <div class="notifications-item">
+          <img src="https://img.icons8.com/flat_round/64/000000/vote-badge.png" alt="img">
+          <div class="text">
+            <h4 class="text-nowrap">John Silvester</h4>
+            <p class="">+20 vista badge earned</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--    End notification alert-->
+    <!--    settings-->
+    <div class="dropdown align-self-center">
+      <a href="/settings" class="nav-link">
+        <i class="fas fa-cog fs-5"></i>
+      </a>
+    </div>
+    <!--    End settings-->
+    <!--    User Profile-->
+    <div class="dropdown align-self-center">
+      <button class="nav-user d-flex flex-nowrap align-items-center" style=""
+              id="userdwn" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+        <span class="account-user-avatar">
+          <img
+            src="data:image/jpeg;base64,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"
+            class="rounded-circle" alt="user" height="30">
+        </span>
+        <span class="text-start text-nowrap mx-2 d-lg-block d-none">
+          <span class="account-user-name">Amr M. Nouh</span>
+          <span class="account-position">Admin</span>
+        </span>
+      </button>
+      <div class="dropdown-menu dropdown-menu-end animate slideIn mt-lg-4 mt-1" aria-labelledby="userdwn">
+        <div class="dropdown-header noti-title">
+          <h6 class="text-overflow m-0" style="font-size: .8rem">Welcome !</h6>
+        </div>
+        <a class="dropdown-item" href="/">
+          <i class="fas fa-user-circle me-2"></i>
+          <span>My Account</span>
+        </a>
+        <a class="dropdown-item"
+           href="/settings/userProfile">
+          <i class="fas fa-user-edit me-2"></i>
+          <span>Settings</span>
+        </a>
+        <a class="dropdown-item "
+           href="">
+          <i class="fas fa-headset me-2"></i>
+          <span>Support</span>
+        </a>
+        <a class="dropdown-item "
+           href="/account/logout">
+          <i class="fas fa-sign-out-alt me-2"></i>
+          <span>Logout</span>
+        </a>
+      </div>
+    </div>
+    <!--    End User Profile-->
+  </div>
+  <!--  End nav content-->
+</nav>

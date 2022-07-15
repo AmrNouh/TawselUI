@@ -1,0 +1,98 @@
+<app-homepage>
+  <div class="d-flex flex-column flex-nowrap mb-3 ">
+    <div class="row">
+      <h4 class="col-sm-2 page-title fs-4">Settings</h4>
+    </div>
+    <div class="row vh-100 shadow rounded">
+      <div class="bg-white shadow accordion accordion-flush col-12 col-md-3 p-sm-0 " id="settingsAccordion" style="z-index: 10002;">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingThree">
+            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+              General
+            </button>
+          </h2>
+          <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"
+               data-bs-parent="#settingsAccordion">
+            <div class="accordion-body">
+              <ul class="nav fw-bold text-black-50">
+                <li class="nav-item w-100" style="cursor: pointer">
+                  <a class="nav-link text-dark">New Payment Method</a>
+                </li>
+                <li class="nav-item w-100" style="cursor: pointer">
+                  <a class="nav-link text-dark">New Shipping Method</a>
+                </li>
+                <li class="nav-item w-100" style="cursor: pointer">
+                  <a class="nav-link text-dark">Shipping Cost</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingOne">
+            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+              Account
+            </button>
+          </h2>
+          <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+               data-bs-parent="#settingsAccordion">
+            <div class="accordion-body">
+              <ul class="nav fw-bold text-black-50">
+                <li class="nav-item w-100" style="cursor: pointer">
+                  <a class="nav-link text-dark">User Profile</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingTwo">
+            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseOne">
+              System Users
+            </button>
+          </h2>
+          <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+               data-bs-parent="#settingsAccordion">
+            <div class="accordion-body">
+              <ul class="nav fw-bold text-black-50">
+                <li class="nav-item w-100" style="cursor: pointer">
+                  <a href="/settings/privileges" class="nav-link text-dark">Authentication</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingFour">
+            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+              Company
+            </button>
+          </h2>
+          <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour"
+               data-bs-parent="#settingsAccordion">
+            <div class="accordion-body">
+              <ul class="nav fw-bold text-black-50">
+                <li class="nav-item w-100" style="cursor: pointer">
+                  <a class="nav-link text-dark">Branches</a>
+                </li>
+                <li class="nav-item w-100" style="cursor: pointer">
+                  <a class="nav-link text-dark">Governments</a>
+                </li>
+                <li class="nav-item" style="cursor: pointer">
+                  <a class="nav-link text-dark">Cities</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-7 flex-fill bg-light py-3 rounded-end">
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </div>
+</app-homepage>

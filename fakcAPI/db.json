@@ -1,0 +1,119 @@
+{
+  "governments": [
+    {
+      "id": 1,
+      "name": "Menoufia",
+      "status": true,
+      "cities": []
+    },
+    {
+      "id": 2,
+      "name": "Cairo",
+      "status": false,
+      "cities": []
+    },
+    {
+      "id": 3,
+      "name": "Alex",
+      "status": true
+    },
+    {
+      "id": 4,
+      "name": "Mansoura",
+      "status": false
+    }
+  ],
+  "branches": [
+    {
+      "id": 1,
+      "name": "MenoufiaBranch",
+      "createdDate": "2021-8-1",
+      "status": true
+    },
+    {
+      "id": 2,
+      "name": "CairoBranch",
+      "createdDate": "2001-2-1",
+      "status": false
+    },
+    {
+      "id": 3,
+      "name": "AlexBranch",
+      "createdDate": "2006-5-6",
+      "status": true
+    },
+    {
+      "id": 4,
+      "name": "MansouraBranch",
+      "createdDate": "2004-8-7",
+      "status": false
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "serialNumber": 544682156,
+      "date": "2025-9-8",
+      "customerData": {
+        "name": "amr",
+        "phoneNumber": "01202871300"
+      },
+      "government": "Menoufia",
+      "city": "Shebin ElKom",
+      "orderCost": 500,
+      "status": "New"
+    },
+    {
+      "id": 2,
+      "serialNumber": 544672156,
+      "date": "2025-2-8",
+      "customerData": {
+        "name": "Mariam",
+        "phoneNumber": "01002871300"
+      },
+      "government": "Alex",
+      "city": "Sedy besr",
+      "orderCost": 100,
+      "status": "Can't Reached"
+    },
+    {
+      "id": 3,
+      "serialNumber": 544682156,
+      "date": "2025-9-8",
+      "customerData": {
+        "name": "Asmaa",
+        "phoneNumber": "01102871300"
+      },
+      "government": "Cairo",
+      "city": "Ramses",
+      "orderCost": 600,
+      "status": "Waiting"
+    },
+    {
+      "id": 4,
+      "serialNumber": 54468288156,
+      "date": "2025-12-8",
+      "customerData": {
+        "name": "Sabry",
+        "phoneNumber": "01201871300"
+      },
+      "government": "Qulubia",
+      "city": "Banha",
+      "orderCost": 1500,
+      "status": "New"
+    },
+    {
+      "id": 5,
+      "serialNumber": 5446895156,
+      "date": "2025-8-8",
+      "customerData": {
+        "name": "Ali",
+        "phoneNumber": "01202871300"
+      },
+      "government": "Mina",
+      "city": "el minya",
+      "orderCost": 5000,
+      "status": "Delivered"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+<div class="container-fluid overflow-hidden vh-100">
+  <div class="row align-items-stretch justify-content-start align-content-start flex-nowrap h-100">
+    <aside class="responsive-aside left-side-menu p-4 flex-shrink-1 flex-grow-0 position-fixed top-0 bottom-0 d-none d-md-block">
+      <app-sidemenu></app-sidemenu>
+    </aside>
+    <section class="responsive-content d-flex px-0 flex-column flex-shrink-1 flex-grow-1 flex-fill">
+      <header class="header-container flex-grow-0 flex-shrink-1 px-0 px-lg-3">
+        <app-header></app-header>
+      </header>
+      <main class="main-content-container container-fluid flex-shrink-1 flex-grow-1 flex-fill">
+        <ng-content></ng-content>
+      </main>
+    </section>
+  </div>
+</div>

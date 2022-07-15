@@ -1,0 +1,64 @@
+<app-homepage>
+<div class="container">
+  <div class="row">
+    <form [formGroup]="registration" #NewUser="ngForm" class="row g-3">
+      <h4 class="page-title">Add New User</h4>
+
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <label for="inputfullname" class="form-label">Full Name</label>
+        <input type="text" formControlName="fullname" #fullName class="form-control" id="inputfullname" placeholder="Full Name">
+        <div *ngIf="Fullname && Fullname.invalid && Fullname.touched" class="text-danger">
+          Full Name Required
+        </div>
+        <div *ngIf="Fullname && fullName.value && Fullname.invalid" class="text-danger">
+          Full Name isn't Valid
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <label for="inputusername" class="form-label">User Name</label>
+        <input type="text" formControlName="username"  #userName class="form-control" id="inputusername" placeholder="User Name">
+        <div *ngIf="UserName && UserName.invalid && UserName.touched" class="text-danger">
+          Email Required
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <label for="inputemail" class="form-label">Email</label>
+        <input type="email" formControlName="email" #email class="form-control" id="inputemail" placeholder="Example@gmail.com">
+        <div *ngIf="Email && Email.invalid && Email.touched" class="text-danger">
+          Email Required
+        </div>
+        <div *ngIf="Email && email.value && Email.invalid " class="text-danger">
+          Email not valid
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <label for="inputpassword" class="form-label">Password</label>
+        <input type="password" formControlName="password" #password class="form-control" id="inputpassword" placeholder="password">
+        <div *ngIf="Password && Password.invalid && Password.touched" class="text-danger">
+          Password Required
+        </div>
+        <div *ngIf="Password && password.value && Password.invalid" class="text-danger">
+          Password length must be greater than 8 character
+        </div>
+
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <label for="Permission" class="form-label">Permissions</label>
+        <select id="Permission" class="form-control form-select" required #permissionId>
+          <option value="0">Permission</option>
+          <option value="1">test</option>
+        </select>
+        <div *ngIf="!permissionId.value" class="text-danger">
+          Please Select a Permission
+        </div>
+      </div>
+
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary" [disabled]="registration.invalid" (click)="createUser(fullName.value,userName.value,email.value,password.value,+permissionId.options[permissionId.selectedIndex].value)">Save</button>
+      </div>
+    </form>
+  </div>
+
+</div>
+</app-homepage>

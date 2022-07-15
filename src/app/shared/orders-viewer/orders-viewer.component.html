@@ -1,0 +1,115 @@
+<app-homepage>
+  <div class="row my-4">
+    <!--order status-->
+    <div class="row">
+      <label class="form-label">Status</label>
+      <select class="w-25 form-control form-select" #statusControl (change)="getFilteredOrders(statusControl.value)">
+        <option>All</option>
+        <option>New</option>
+        <option>Waiting</option>
+        <option>Delivered to representative</option>
+        <option>Delivered</option>
+        <option>Can't reached</option>
+        <option>Partially delivered</option>
+        <option>Canceled by recipient</option>
+        <option>Rejected with payment</option>
+        <option>Rejected with partial payment</option>
+        <option>Rejected without payment</option>
+      </select>
+    </div>
+    <!--Order Table-->
+    <div class="row my-5" style="overflow-x: auto">
+      <table class="table table-responsive table-bordered table-striped table-hover align-self-center table-sm text-center">
+        <thead class="table-secondary">
+        <tr>
+          <th class="text-nowrap">
+            <input class="form-check" type="checkbox">
+          </th>
+          <th class="text-nowrap">Serial Number</th>
+          <th class="text-nowrap">Created Date</th>
+          <th class="text-nowrap">Customer Data</th>
+          <th class="text-nowrap">Government</th>
+          <th class="text-nowrap">City</th>
+          <th class="text-nowrap">Order Cost</th>
+          <th class="text-nowrap">Edit Order</th>
+          <th class="text-nowrap">change status</th>
+          <th class="text-nowrap">Delete</th>
+          <th class="text-nowrap">
+            <i class="fas fa-print"></i>
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let order of orders">
+          <td>
+            <input class="form-check" type="checkbox">
+          </td>
+          <td>{{order.serialNumber}}</td>
+          <td>{{order.date}}</td>
+          <td>
+            <label>{{order.customerData.name}}</label>
+            <label>{{order.customerData.phoneNumber}}</label>
+          </td>
+          <td>{{order.government}}</td>
+          <td class="text-nowrap">{{order.city}}</td>
+          <td>{{order.orderCost}}</td>
+          <td>
+            <a href="/settings/orders/{{order.id}}"
+               class="btn px-2 py-0 me-2 bg-success text-light text-decoration-none">
+              <i class="fas fa-pencil-alt"></i>
+            </a>
+          </td>
+          <td>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#statusModel">
+              status
+            </button>
+            <div class="modal fade" id="statusModel" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                 aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Change Order Status</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="d-flex flex-column mx-2">
+                      <label class="align-self-start">Status</label>
+                      <select class="w-25 form-control form-select w-100" #statusControl>
+                        <option>New</option>
+                        <option>Waiting</option>
+                        <option>Delivered to representative</option>
+                        <option>Delivered</option>
+                        <option>Can't reached</option>
+                        <option>Partially delivered</option>
+                        <option>Canceled by recipient</option>
+                        <option>Rejected with payment</option>
+                        <option>Rejected with partial payment</option>
+                        <option>Rejected without payment</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">change</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <a href="" class="btn px-2 py-0 bg-danger text-light text-decoration-none">
+              <i class="fas fa-trash"></i>
+            </a>
+          </td>
+          <td>
+            <a href="" class="btn px-2 py-0 bg-info text-light text-decoration-none">
+              <i class="fas fa-print"></i>
+            </a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</app-homepage>

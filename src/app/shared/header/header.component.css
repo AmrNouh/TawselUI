@@ -1,0 +1,183 @@
+.toggle-button {
+  border: none;
+  color: #313a46;
+  height: 70px;
+  line-height: 70px;
+  width: 60px;
+  background-color: transparent;
+  font-size: 20px;
+  cursor: pointer;
+  float: left;
+  z-index: 1;
+}
+
+.search-container {
+  padding-left: 1rem;
+  background-color: #f1f3fa;
+  border-radius: 0.4rem;
+}
+
+.input-search {
+  outline: none;
+  color: var(--ct-input-color) !important;
+  width: 300px;
+}
+
+.btn-primary {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.navbar-custom .topbar-menu .nav-link {
+  padding: 0;
+  color: #98a6ad;
+  min-width: 32px;
+  display: block;
+  text-align: center;
+  margin: 0 10px;
+  position: relative;
+}
+
+.nav-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #98a6ad;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+  cursor: pointer;
+}
+
+.dropdown-toggle {
+  white-space: nowrap;
+}
+
+.dropdown-menu {
+  z-index: 1000;
+  min-width: 10rem;
+  padding: 0.25rem 0;
+  margin-top: 1rem;
+  font-size: .9rem;
+  color: #6c757d;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #e7ebf0;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 35px 0 rgb(154 161 171 / 15%);
+}
+
+@media (min-width: 768px) {
+  .animate {
+    animation-duration: 0.3s;
+    -webkit-animation-duration: 0.3s;
+    animation-fill-mode: both;
+    -webkit-animation-fill-mode: both;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(2.5rem);
+    opacity: 1;
+  }
+
+  0% {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes slideIn {
+  0% {
+    -webkit-transform: transform;
+    -webkit-opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: translateY(0);
+    -webkit-opacity: 1;
+  }
+
+  0% {
+    -webkit-transform: translateY(.5rem);
+    -webkit-opacity: 0;
+  }
+}
+
+.slideIn {
+  -webkit-animation-name: slideIn;
+  animation-name: slideIn;
+}
+
+
+
+.notifications h2 {
+  font-size: 14px;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  color: #999
+}
+
+.notifications h2 span {
+  color: #f00
+}
+
+.notifications-item {
+  display: flex;
+  border-bottom: 1px solid #eee;
+  padding: 6px 9px;
+  margin-bottom: 0px;
+  cursor: pointer
+}
+
+.notifications-item:hover {
+  background-color: #eee
+}
+
+.notifications-item img {
+  display: block;
+  width: 50px;
+  height: 50px;
+  margin-right: 9px;
+  border-radius: 50%;
+  margin-top: 2px
+}
+
+.notifications-item .text h4 {
+  color: #777;
+  font-size: 16px;
+  margin-top: 3px
+}
+
+.notifications-item .text p {
+  color: #aaa;
+  font-size: 12px
+}
+
+.nav-user {
+  text-align: left!important;
+  background-color: #fafbfd;
+  border: 1px solid #f1f3fa;
+  color: #98a6ad;
+  min-height: 70px;
+}
+
+.account-user-avatar {
+
+}
+
+.account-user-name {
+  display: block;
+  font-weight: 600;
+}
+
+.account-position {
+  display: block;
+  font-size: 12px;
+  margin-top: -3px;
+}
