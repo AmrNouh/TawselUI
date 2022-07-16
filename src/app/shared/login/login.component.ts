@@ -45,6 +45,8 @@ export class LoginComponent implements OnInit {
       (data:any)=>{
         this.isLogining=true;
         localStorage.setItem('token',data.token)
+        localStorage.setItem('userName',data.userName)
+
         console.log(data.token)
         setTimeout(() => {
           this.router.navigate(["/home"])

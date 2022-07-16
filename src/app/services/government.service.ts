@@ -8,27 +8,27 @@ import {Government} from "../models/government";
 })
 export class GovernmentService {
 
-  private BASEURL: string = "http://localhost:3000"
+  private BASEURL: string = "https://localhost:44372/api"
   constructor(private http: HttpClient) {}
 
   getAll(): Observable<Government[]>{
-    return this.http.get<Government[]>(`${this.BASEURL}/governments`);
+    return this.http.get<Government[]>(`${this.BASEURL}/States`);
   }
 
   getById(id:number):Observable<Government>{
-    return this.http.get<Government>(`${this.BASEURL}/governments/${id}`);
+    return this.http.get<Government>(`${this.BASEURL}/States/${id}`);
   }
 
   insert(government:Government): void {
-    this.http.post<Government>(`${this.BASEURL}/governments`,government);
+    this.http.post<Government>(`${this.BASEURL}/States`,government);
   }
 
   update(id:number,government:Government): void {
-    this.http.put<Government>(`${this.BASEURL}/governments/${id}`,government);
+    this.http.put<Government>(`${this.BASEURL}/States/${id}`,government);
   }
 
   delete(id:number): void{
-    this.http.delete<Government>(`${this.BASEURL}/governments/${id}`);
+    this.http.delete<Government>(`${this.BASEURL}/States/${id}`);
   }
 
 }

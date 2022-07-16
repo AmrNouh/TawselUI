@@ -7,8 +7,9 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor() {}
 
+ userName=localStorage.getItem("userName")
   left: string = '0';
   @Output() changeLeft = new EventEmitter<string>();
 

@@ -44,7 +44,7 @@ export class SystemUsersComponent implements OnInit {
 
   createUser(fullName:string,userName:string,email:string,password:string,permissionId:number){
     console.log(permissionId);
-    this.newAccount.fullName = fullName;
+    this.newAccount.full_Name = fullName;
     this.newAccount.email = email;
     this.newAccount.userName = userName;
     this.newAccount.password = password;
