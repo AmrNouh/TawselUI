@@ -9,19 +9,19 @@ import {Branches} from "../models/branches";
 })
 export class OrderService {
 
-  private baseUrl:string = "http://localhost:3000"
+  private baseUrl:string = "https://localhost:44372/api"
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<Order[]>{
-    return this.http.get<Order[]>(`${this.baseUrl}/orders`);
+    return this.http.get<Order[]>(`${this.baseUrl}/Orders`);
   }
 
   getById(id:number): Observable<Order>{
-    return this.http.get<Order>(`${this.baseUrl}/orders/${id}`);
+    return this.http.get<Order>(`${this.baseUrl}/Orders/${id}`);
   }
 
   filterByStatus(status:string):Observable<Order[]>{
-    return this.http.get<Order[]>(`${this.baseUrl}/orders?status=${status}`);
+    return this.http.get<Order[]>(`${this.baseUrl}/Orders?status=${status}`);
   }
   insert(order:Order): void {
     this.http.post<Order>(`${this.baseUrl}/orders`,order);

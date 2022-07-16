@@ -8,27 +8,27 @@ import {Branches} from "../models/branches";
 })
 export class BranchesService {
 
-  private BASEURL: string = "http://localhost:3000"
+  private BASEURL: string = "https://localhost:44372/api"
 
   constructor(private http:HttpClient) { }
 
   getAll(): Observable<Branches[]>{
-    return this.http.get<Branches[]>(`${this.BASEURL}/branches`);
+    return this.http.get<Branches[]>(`${this.BASEURL}/Branches`);
   }
 
   getById(id:number):Observable<Branches>{
-    return this.http.get<Branches>(`${this.BASEURL}/branches/${id}`);
+    return this.http.get<Branches>(`${this.BASEURL}/Branches/${id}`);
   }
 
   insert(branch:Branches): void {
-    this.http.post<Branches>(`${this.BASEURL}/branches`,branch);
+    this.http.post<Branches>(`${this.BASEURL}/Branches`,branch);
   }
 
   update(id:number,branch:Branches): void {
-    this.http.put<Branches>(`${this.BASEURL}/branches/${id}`,branch);
+    this.http.put<Branches>(`${this.BASEURL}/Branches/${id}`,branch);
   }
 
   delete(id:number): void{
-    this.http.delete<Branches>(`${this.BASEURL}/branches/${id}`);
+    this.http.delete<Branches>(`${this.BASEURL}/Branches/${id}`);
   }
 }
