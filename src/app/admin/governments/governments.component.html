@@ -22,9 +22,16 @@
             </div>
           </td>
           <td>
-            <a href="/settings/governments/{{government.id}}" class="btn px-2 py-0 bg-success text-light text-decoration-none">
+            <!-- <a href="/settings/governments/{{government.id}}" class="btn px-2 py-0 bg-success text-light text-decoration-none">
               <i class="fas fa-pencil-alt"></i>
-            </a>
+            </a> -->
+            <button  
+             class="btn px-2 py-0 bg-success text-light text-decoration-none"
+             data-bs-toggle="modal" data-bs-target="#governmentEdit"
+             (click)="updateGovernment(government.id)"
+             >
+              <i class="fas fa-pencil-alt"></i>
+            </button>
           </td>
         </tr>
         </tbody>
@@ -32,3 +39,36 @@
     </div>
   </div>
 </app-homepage>
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="governmentEdit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Edit Government</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="governmentName" class="form-label">Government Name</label>
+            <input type="text" name="governmentName" [(ngModel)]="UpdatedGovernoment.name" class="form-control" id="governmentName" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          </div>
+          <div class="mb-3  form-check form-switch">
+            <input class="form-check-input" name="governmentStatus" type="checkbox" role="switch" [(ngModel)]="UpdatedGovernoment.status" >
+            <label for="governmentStatus" class="form-label">Government Status</label>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cansel</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="saveUpdate()" >Save</button>
+      </div>
+    </div>
+  </div>
+</div>

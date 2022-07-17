@@ -14,7 +14,7 @@ export class GovernmentsComponent implements OnInit, OnDestroy {
   allGovernments: Government[] = [];
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
-
+UpdatedGovernoment:Government=new Government();
   constructor(private governmentService: GovernmentService) {
   }
 
@@ -35,5 +35,34 @@ export class GovernmentsComponent implements OnInit, OnDestroy {
       }, error => {
         console.log(error)
       })
+  }
+  updateGovernment(id:number)
+  {
+    this.governmentService.getById(id).subscribe(
+      (data)=>{
+        console.log(data);
+        this.UpdatedGovernoment=data;
+      },
+      (err)=>{
+        console.log(err);
+        
+      }
+    )
+  }
+  saveUpdate()
+  {
+    this.governmentService.update(this.UpdatedGovernoment.id,this.UpdatedGovernoment).subscribe(
+      (data)=>{
+        console.log(data);
+        alert("Governorate Updated Successfully")
+        this.ngOnInit();
+      },
+      (err)=>{
+        console.log(err);
+
+        alert("Error Ocuured")
+
+      }
+    )
   }
 }

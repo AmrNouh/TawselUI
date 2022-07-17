@@ -35,8 +35,8 @@ export class GovernmentService {
     this.http.post<Government>(`${this.BASEURL}/States`,government,this.requestOptions);
   }
 
-  update(id:number,government:Government): void {
-    this.http.put<Government>(`${this.BASEURL}/States/${id}`,government,this.requestOptions);
+  update(id:number,government:Government) {
+   return this.http.put<Government>(`${this.BASEURL}/States/${id}`,government,this.requestOptions);
   }
 
   delete(id:number): void{
