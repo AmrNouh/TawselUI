@@ -176,19 +176,15 @@ console.log(this.newOrder);
 
 this.orderService.insert(this.newOrder).subscribe(
   (data)=>{console.log(data);
-    
+    alert("Order Added Successfully")
+    this.ngOnInit();
   },
-  ()=>{}
+  (err)=>{
+    console.log(err);
+    alert("Error Occured")
+
+  }
 )
-
-
-
-
-
-
-
-
-
 
   }
 
@@ -228,7 +224,7 @@ this.orderService.insert(this.newOrder).subscribe(
   }
 
   private getAllBranches() {
-    this.Branchservice.getAll().subscribe(data => {
+    this.Branchservice.getByStatus().subscribe(data => {
       this.branches = data;
     })
   }

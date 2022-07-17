@@ -1,5 +1,5 @@
   <!--logo-->
-  <a href="/" class="d-none d-md-block text-decoration-none text-center">
+  <a routerLink="/" class="d-none d-md-block text-decoration-none text-center">
     <span class="logo-lg">
       <i class="fas fa-shipping-fast me-2"></i>
       <span class="fs-4 text-white fw-bold d-none d-lg-inline-block">Tawsel App</span>
@@ -11,34 +11,41 @@
   <!--Side Menu Content-->
   <ul class="nav nav-pills flex-column align-content-center align-content-lg-start">
     <li class="side-menu-item">
-      <a href="/home" class="nav-link text-white">
+      <a routerLink="/home" class="nav-link text-white">
         <i class="fas fa-home me-2"></i>
         <span class="side-menu-text d-none d-lg-inline-block">Dashboard</span>
       </a>
     </li>
     <li class="side-menu-item">
-      <a href="/newUser" class="nav-link text-white">
+      <a routerLink="/order" class="nav-link text-white">
+        <i class="fa fa-plus me-2" ></i>
+        <span class="side-menu-text d-none d-lg-inline-block">Add New Order</span>
+      </a>
+    </li>
+    <li class="side-menu-item">
+      <a routerLink="/newUser" class="nav-link text-white">
         <i class="fas fa-user-plus me-2"></i>
         <span class="side-menu-text d-none d-lg-inline-block">New Employee</span>
       </a>
     </li>
     <li class="side-menu-item">
-      <a href="/reports" class="nav-link text-white">
+      <a routerLink="/reports" class="nav-link text-white">
         <i class="fas fa-paperclip me-2"></i>
         <span class="side-menu-text d-none d-lg-inline-block">Reports</span>
       </a>
     </li>
     <li class="side-menu-item">
-      <a href="/branches" class="nav-link text-white">
+      <a routerLink="/branches" class="nav-link text-white">
         <i class="fas fa-building me-2"></i>
         <span class="side-menu-text d-none d-lg-inline-block">Branches</span>
       </a>
     </li>
     <li class="side-menu-item">
-      <a href="/governments" class="nav-link text-white">
+      <a routerLink="/governments" class="nav-link text-white">
         <i class="fas fa-university me-2"></i>
         <span class="side-menu-text d-none d-lg-inline-block">Governments</span>
       </a>
     </li>
+
   </ul>
   <!--End side Menu Content-->
