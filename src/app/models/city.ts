@@ -2,8 +2,10 @@ export class City {
   private _normalShippingCost: number = 0;
 
   constructor(
+    public id : number = 0,
     public governmentId:number,
-    public name:string
+    public name:string,
+    public costpercity:number=0
   ) {
   }
 

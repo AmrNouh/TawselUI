@@ -1,0 +1,24 @@
+<app-homepage>
+  <div class="container-fluid">
+    <div class="row">
+        <h4 class="page-title">Home</h4>
+      <div class="row justify-content-start align-items-center">
+        <div *ngFor="let status of statuses" class="card p-0 col-12 col-md-6 col-lg-4 flex-grow-0 flex-shrink-1" style="height: 80px;">
+          <a href="/orders/{{status.id}}}" class="nav-link text-muted fw-bold">
+            <div class="row justify-content-between p-3">
+              <div class="col-9">
+                <div class="d-flex flex-column">
+                  <span>{{status.name}}</span>
+                  <span></span>
+                </div>
+              </div>
+              <div class="col-2">
+                <i class="fas fa-shopping-bag fs-3 text-primary"></i>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-homepage>

@@ -17,7 +17,7 @@
         <tr *ngFor="let branch of branches">
           <td>{{branch.id}}</td>
           <td>{{branch.name}}</td>
-          <td>{{branch.createdDate}}</td>
+          <td>{{branch.createdDate | date:"yyyy-mm-dd"}}</td>
           <td>
             <div class="d-flex justify-content-center form-check form-switch">
               <input class="form-check-input" type="checkbox" role="switch" [checked]="branch.status" onclick="return false;">

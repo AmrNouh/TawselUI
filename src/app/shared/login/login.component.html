@@ -54,10 +54,10 @@
               </div>
             </div>
             <div class="mb-3 mb-0 text-center">
-              <button type="submit" class="btn btn-primary" [disabled]="Login.invalid"
+              <button type="submit" class="btn btn-primary w-25" [disabled]="Login.invalid"
                       (click)="checkAuthentication(newUser)">
                 <div *ngIf="isLogining" class="text-center mt-4">
-                  <i class="fa fa-spinner  fa-pulse" style="font-size:48px;"></i>
+                  <i class="fa fa-spinner fa-pulse" style="font-size:14px;"></i>
                 </div>
                 Log In
               </button>

@@ -3,18 +3,9 @@
     <!--order status-->
     <div class="row">
       <label class="form-label">Status</label>
-      <select class="w-25 form-control form-select" #statusControl (change)="getFilteredOrders(statusControl.value)">
-        <option>All</option>
-        <option>New</option>
-        <option>Waiting</option>
-        <option>Delivered to representative</option>
-        <option>Delivered</option>
-        <option>Can't reached</option>
-        <option>Partially delivered</option>
-        <option>Canceled by recipient</option>
-        <option>Rejected with payment</option>
-        <option>Rejected with partial payment</option>
-        <option>Rejected without payment</option>
+      <select class="w-25 form-control form-select" #statusControl (change)="getFilteredOrders(+statusControl.options[statusControl.selectedIndex].value)">
+        <option value="0">All</option>
+        <option *ngFor="let status of statuses" value="{{status.id}}">{{status.name}}</option>
       </select>
     </div>
     <!--Order Table-->

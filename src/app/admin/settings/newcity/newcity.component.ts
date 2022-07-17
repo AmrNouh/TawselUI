@@ -37,6 +37,6 @@ export class NewcityComponent implements OnInit {
 
   createNewCity() {
     this.submitted = true;
-    console.log(this.name);
+    console.log(this.shippingCost);
   }
 }

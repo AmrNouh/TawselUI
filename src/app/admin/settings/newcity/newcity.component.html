@@ -43,6 +43,9 @@
           <div *ngIf="shippingCost?.errors?.['required']">
             shipping cost is required.
           </div>
+          <div *ngIf="shippingCost?.errors?.['min']">
+            shipping cost must be greater than 0.
+          </div>
         </div>
       </div>
       <div class="col-12 my-3 d-block">
