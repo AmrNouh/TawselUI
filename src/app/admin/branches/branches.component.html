@@ -76,11 +76,6 @@
             <label for="BranchStatus" class="form-label">Branch Status</label>
           </div>
           <div class="mb-3">
-            <label for="BDate" name="Branchdate"    class="form-label">Created Date</label>
-            <input type="date" name="Bdate" [(ngModel)]="UpdatedBranch.createdDate" class="form-control" >
-          </div>
-
-          <div class="mb-3">
             <select class="form-select" [value]="UpdatedBranch.cityId" aria-label="Default select example">
               <option *ngFor="let city of cities" [value]="city.id">{{city.name}}</option>
             </select>

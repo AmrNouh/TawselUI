@@ -33,7 +33,7 @@ export class NewcityComponent implements OnInit {
       shippingCost: new UntypedFormControl('', [Validators.required, Validators.min(0)])
     });
 
-
+    this.getallGovernments()
   }
 
   get government() {
@@ -81,6 +81,7 @@ this.governmentservice.getAll().subscribe(
   (data)=>{
     console.log(data);
     this.governments=data;
+
   },
   (err)=>{
     console.log(err);
