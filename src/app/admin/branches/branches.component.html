@@ -17,19 +17,32 @@
         <tr *ngFor="let branch of branches">
           <td>{{branch.id}}</td>
           <td>{{branch.name}}</td>
-          <td>{{branch.createdDate}}</td>
+          <td>{{branch.createdDate | date:"yyyy-mm-dd"}}</td>
           <td>
             <div class="d-flex justify-content-center form-check form-switch">
               <input class="form-check-input" type="checkbox" role="switch" [checked]="branch.status" onclick="return false;">
             </div>
           </td>
           <td>
-            <a href="/settings/branches/{{branch.id}}" class="btn px-2 py-0 me-2 bg-success text-light text-decoration-none">
+            <!-- <a href="/settings/branches/{{branch.id}}" class="btn px-2 py-0 me-2 bg-success text-light text-decoration-none">
               <i class="fas fa-pencil-alt"></i>
             </a>
             <a href="" class="btn px-2 py-0 bg-danger text-light text-decoration-none">
               <i class="fas fa-trash"></i>
-            </a>
+            </a> -->
+            <button  
+            class="btn px-2 py-0 me-2 bg-success text-light text-decoration-none"
+            data-bs-toggle="modal" data-bs-target="#UpdatedBranch"
+            (click)="getUpdateBranche(branch.id)"
+            >
+              <i class="fas fa-pencil-alt"></i>
+            </button>
+            <button  
+            class="btn px-2 py-0 bg-danger text-light text-decoration-none"
+            (click)="DeleteBranche(branch.id)"
+            >
+              <i class="fas fa-trash"></i>
+            </button>
           </td>
         </tr>
         </tbody>
@@ -37,3 +50,42 @@
     </div>
   </div>
 </app-homepage>
+
+
+
+<!-- Updtate Branche -->
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="UpdatedBranch" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Update Branch</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="Bname"  class="form-label">Branch Name</label>
+            <input type="text" name="Branch" class="form-control" [(ngModel)]="UpdatedBranch.name"  id="exampleInputEmail1" >
+          </div>
+          <div class="mb-3  form-check form-switch">
+            <input class="form-check-input" name="Branchstatus" id="BranchStatus" type="checkbox" role="switch" [(ngModel)]="UpdatedBranch.status" >
+            <label for="BranchStatus" class="form-label">Branch Status</label>
+          </div>
+          <div class="mb-3">
+            <select class="form-select" [value]="UpdatedBranch.cityId" aria-label="Default select example">
+              <option *ngFor="let city of cities" [value]="city.id">{{city.name}}</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"  (click)="SaveUpdate()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>

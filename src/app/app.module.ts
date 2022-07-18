@@ -24,6 +24,8 @@ import { OrdersViewerComponent } from './shared/orders-viewer/orders-viewer.comp
 import { UserprivilegesComponent } from './admin/settings/userprivileges/userprivileges.component';
 import { NewcityComponent } from './admin/settings/newcity/newcity.component';
 import { ShippingCostComponent } from './admin/settings/shipping-cost/shipping-cost.component';
+import { HomePageCardsComponent } from './shared/home-page-cards/home-page-cards.component';
+import { CreateOrderComponent } from './employee/create-order/create-order.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,8 @@ import { ShippingCostComponent } from './admin/settings/shipping-cost/shipping-c
     UserprivilegesComponent,
     NewcityComponent,
     ShippingCostComponent,
+    HomePageCardsComponent,
+    CreateOrderComponent,
   ],
   imports: [
     BrowserModule,

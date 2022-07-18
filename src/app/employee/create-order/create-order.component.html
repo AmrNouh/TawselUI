@@ -1,0 +1,274 @@
+<app-homepage>
+  <div class="row mb-3">
+    <h4 class="page-title">Create Order</h4>
+    <form [formGroup]="createOrderForm" (ngSubmit)="createOrder(
+      +ordertype.options[ordertype.selectedIndex].value ,
+      customer.value,
+      phone1.value,
+      phone2.value ,
+       Email.value,
+       +state.options[state.selectedIndex].value,
+       +cityId.options[cityId.selectedIndex].value,
+       +ship.options[ship.selectedIndex].value,
+       +pay.options[pay.selectedIndex].value,
+       +bran.options[bran.selectedIndex].value,
+       ordCost.value
+
+
+       )" class="row justify-content-center">
+      <div class="col-10 col-sm-8 col-md-6 col-lg-4 my-2">
+        <label class="" for="orderType">Order Type</label>
+        <select formControlName="orderType" [ngClass]="{'is-invalid': submitted && orderType?.errors,
+                'is-valid': !orderType?.errors}" class="form-select" #ordertype id="orderType" name="orderType"
+          required>
+          <option *ngFor="let type of orderTypes" [value]="type.id">{{type.name}}</option>
+        </select>
+        <div *ngIf="orderType?.invalid && (orderType?.dirty || orderType?.touched)" class="text-danger">
+          <div *ngIf="orderType?.errors?.['required']">
+            Order Type is required.
+          </div>
+        </div>
+      </div>
+      <div class="col-10 col-sm-8 col-md-6 col-lg-4 my-2">
+        <label for="customerName">Customer Name</label>
+        <input formControlName="customerName" #customer type="text" name="customerName" id="customerName"
+          class="form-control" [ngClass]="{'is-invalid': submitted && customerName?.errors,
+                'is-valid': !customerName?.errors}" required>
+        <div *ngIf="customerName?.invalid && (customerName?.dirty || customerName?.touched)" class="text-danger">
+          <div *ngIf="customerName?.errors?.['required']">
+            customer Name is required.
+          </div>
+          <div *ngIf="customerName?.errors?.['minlength']">
+            customer Name length must be greater than 3 characters.
+          </div>
+          <div *ngIf="customerName?.errors?.['pattern']">
+            invalid customer Name.
+          </div>
+        </div>
+      </div>
+      <div class="col-10 col-sm-8 col-md-6 col-lg-4 my-2">
+        <label for="phoneNumber1">Phone Number1</label>
+        <input #phone1 formControlName="phoneNumber1" type="text" name="phoneNumber1" id="phoneNumber1"
+          class="form-control" [ngClass]="{'is-invalid': submitted && phoneNumber1?.errors,
+                'is-valid': !phoneNumber1?.errors}" required>
+        <div *ngIf="phoneNumber1?.invalid && (phoneNumber1?.dirty || phoneNumber1?.touched)" class="text-danger">
+          <div *ngIf="phoneNumber1?.errors?.['required']">
+            phone Number1 is required.
+          </div>
+          <div *ngIf="customerName?.errors?.['pattern']">
+            invalid phone Number1.
+          </div>
+        </div>
+      </div>
+      <div class="col-10 col-sm-8 col-md-6 col-lg-4 my-2">
+        <label for="phoneNumber2">Phone Number2</label>
+        <input #phone2 formControlName="phoneNumber2" type="text" name="phoneNumber2" id="phoneNumber2"
+          class="form-control" [ngClass]="{'is-invalid': submitted && phoneNumber2?.errors,
+                'is-valid': !phoneNumber2?.errors}" required>
+        <div *ngIf="phoneNumber2?.invalid && (phoneNumber2?.dirty || phoneNumber2?.touched)" class="text-danger">
+          <div *ngIf="phoneNumber2?.errors?.['required']">
+            Phone Number2 is required.
+          </div>
+          <div *ngIf="customerName?.errors?.['pattern']">
+            invalid Phone Number2.
+          </div>
+        </div>
+      </div>
+      <div class="col-10 col-sm-8 col-md-6 col-lg-4 my-2">
+        <label for="email">Email</label>
+        <input #Email formControlName="email" type="text" name="email" id="email" class="form-control" [ngClass]="{'is-invalid': submitted && email?.errors,
+                'is-valid': !email?.errors}" required>
+        <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="text-danger">
+          <div *ngIf="email?.errors?.['required']">
+            Email is required.
+          </div>
+          <div *ngIf="email?.errors?.['email']">
+            invalid Email.
+          </div>
+        </div>
+      </div>
+      <div class="col-10 col-sm-8 col-md-6 col-lg-4 my-2">
+        <label class="" for="government">Government</label>
+        <select #state formControlName="government" [ngClass]="{'is-invalid': submitted && government?.errors,
+                'is-valid': !government?.errors}" class="form-select" #governmentControl id="government"
+          name="government" required
+          (change)="loadGovernmentCities(+governmentControl.options[governmentControl.selectedIndex].value)">
+          <option *ngFor="let government of governments" [value]="government.id">{{government.name}}</option>
+        </select>
+        <div *ngIf="government?.invalid && (government?.dirty || government?.touched)" class="text-danger">
+          <div *ngIf="government?.errors?.['required']">
+            Government is required.
+          </div>
+        </div>
+      </div>
+      <div class="col-10 col-sm-8 col-md-6 col-lg-4 my-2">
+        <label class="" for="city">City</label>
+        <select #cityId formControlName="city" [ngClass]="{'is-invalid': submitted && city?.errors,
+                'is-valid': !city?.errors}" class="form-select" id="city" name="city" required>
+          <option *ngFor="let city of cities" [value]="city.id">{{city.name}}</option>
+        </select>
+        <div *ngIf="city?.invalid && (city?.dirty || city?.touched)" class="text-danger">
+          <div *ngIf="city?.errors?.['required']">
+            City is required.
+          </div>
+        </div>
+      </div>
+      <div class="col-10 col-sm-8 col-md-6 col-lg-4 my-2">
+        <label for="street">Village or Street</label>
+        <input formControlName="street" type="text" name="street" id="street" class="form-control" [ngClass]="{'is-invalid': submitted && street?.errors,
+                'is-valid': !street?.errors}" required>
+        <div *ngIf="street?.invalid && (street?.dirty || street?.touched)" class="text-danger">
+          <div *ngIf="street?.errors?.['required']">
+            customer Name is required.
+          </div>
+        </div>
+      </div>
+      <div class="col-10 col-sm-8 col-md-6 col-lg-4 my-2 align-self-center">
+        <div class="d-flex justify-content-center align-items-center form-check form-switch">
+          <input class="form-check-input me-2" type="checkbox" role="switch" [checked]="isShippableToVillage">
+          <label class="form-label align-self-center">Ship to village?</label>
+        </div>
+      </div>
+      <div class="col-10 col-sm-8 col-md-6 col-lg-4 my-2">
+        <label class="" for="shippingMethod">Shipping Method</label>
+        <select #ship formControlName="shippingMethod" [ngClass]="{'is-invalid': submitted && shippingMethod?.errors,
+                'is-valid': !shippingMethod?.errors}" class="form-select" id="shippingMethod" name="shippingMethod"
+          required>
+          <option *ngFor="let shipment of shippingMethods" [value]="shipment.id">{{shipment.name}}</option>
+        </select>
+        <div *ngIf="shippingMethod?.invalid && (shippingMethod?.dirty || shippingMethod?.touched)" class="text-danger">
+          <div *ngIf="shippingMethod?.errors?.['required']">
+            Shipping Method is required.
+          </div>
+        </div>
+      </div>
+      <div class="col-10 col-sm-8 col-md-6 col-lg-4 my-2">
+        <label class="" for="paymentMethod">Payment Method</label>
+        <select #pay formControlName="paymentMethod" [ngClass]="{'is-invalid': submitted && paymentMethod?.errors,
+                'is-valid': !paymentMethod?.errors}" class="form-select" id="paymentMethod" name="paymentMethod"
+          required>
+          <option *ngFor="let payment of paymentMethods" [value]="payment.id">{{payment.name}}</option>
+        </select>
+        <div *ngIf="paymentMethod?.invalid && (paymentMethod?.dirty || paymentMethod?.touched)" class="text-danger">
+          <div *ngIf="paymentMethod?.errors?.['required']">
+            Payment Method is required.
+          </div>
+        </div>
+      </div>
+      <div class="col-10 col-sm-8 col-md-6 col-lg-4 my-2">
+        <label class="" for="branch">Branch</label>
+        <select #bran formControlName="branch" [ngClass]="{'is-invalid': submitted && branch?.errors,
+                'is-valid': !branch?.errors}" class="form-select" id="branch" name="branch" required>
+          <option *ngFor="let branch of branches" [value]="branch.id">{{branch.name}}</option>
+        </select>
+        <div *ngIf="branch?.invalid && (branch?.dirty || branch?.touched)" class="text-danger">
+          <div *ngIf="branch?.errors?.['required']">
+            Branch is required.
+          </div>
+        </div>
+      </div>
+      <div class="row rounded shadow my-5 bg-white py-3 flex-nowrap justify-content-between">
+        <div class="col-2 flex-shrink-1 flex-grow-0">
+          <button class="btn btn-primary" (click)="newProduct()">Add Product</button>
+        </div>
+        <table
+          class="table table-secondary table-hover table-responsive table-bordered text-center flex-shrink-1 flex-grow-1 flex-fill col-10">
+          <thead class="table-secondary">
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Weight</th>
+            <th>Delete</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let dummy of ' '.repeat(numberOfProducts).split('')">
+              <td>
+                <input class="form-control" type="text"  name="productName" id="name" required placeholder="Product Name"
+                  minlength="3">
+              </td>
+              <td>
+                <input class="form-control" type="number"  name="quantity" id="quantity" required placeholder="Quantity"
+                  min="0">
+              </td>
+              <td>
+                <input class="form-control" type="number"  name="weight" id="weight" required placeholder="Weight"
+                  min="0">
+              </td>
+              <td>
+                <a class="btn px-2 py-0 bg-success text-light text-decoration-none">
+                  <i class="fas fa-trash"></i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="row">
+        <div class="col-10 col-sm-8 col-md-6 col-lg-4 my-2">
+          <label for="orderCost">Order Cost</label>
+          <input #ordCost formControlName="orderCost" type="number" name="orderCost" id="orderCost" class="form-control"
+            [ngClass]="{'is-invalid': submitted && orderCost?.errors,
+                  'is-valid': !orderCost?.errors}" required>
+
+          <div *ngIf="orderCost?.invalid && (orderCost?.dirty || orderCost?.touched)" class="text-danger">
+            <div *ngIf="orderCost?.errors?.['required']">
+              order Cost is required.
+            </div>
+          </div>
+        </div>
+        <div class="col-10 col-sm-8 col-md-6 col-lg-4 my-2">
+          <label for="totalWeight">Total Weight</label>
+          <input formControlName="totalWeight" type="number" name="totalWeight" id="totalWeight" class="form-control"
+            [ngClass]="{'is-invalid': submitted && totalWeight?.errors,
+                  'is-valid': !totalWeight?.errors}" required>
+          <div *ngIf="totalWeight?.invalid && (totalWeight?.dirty || totalWeight?.touched)" class="text-danger">
+            <div *ngIf="totalWeight?.errors?.['required']">
+              Total Weight is required.
+            </div>
+          </div>
+        </div>
+        <!-- <div class="col-10 col-sm-8 col-md-6 col-lg-4 my-2">
+          <label for="notes">Notes</label>
+          <input formControlName="notes" type="text" name="notes" id="notes" class="form-control">
+        </div> -->
+      </div>
+      <div class="row">
+        <div class="col-10 col-sm-8 col-md-6 col-lg-4 my-2">
+          <label for="traderPhoneNumber">Trader Phone Number</label>
+          <input formControlName="traderPhoneNumber" type="text" name="traderPhoneNumber" id="traderPhoneNumber"
+            class="form-control" [ngClass]="{'is-invalid': submitted && traderPhoneNumber?.errors,
+                  'is-valid': !traderPhoneNumber?.errors}" required>
+          <div *ngIf="traderPhoneNumber?.invalid && (traderPhoneNumber?.dirty || traderPhoneNumber?.touched)"
+            class="text-danger">
+            <div *ngIf="traderPhoneNumber?.errors?.['required']">
+              trader PhoneNumber is required.
+            </div>
+            <div *ngIf="customerName?.errors?.['pattern']">
+              invalid trader PhoneNumber
+            </div>
+          </div>
+        </div>
+        <div class="col-10 col-sm-8 col-md-6 col-lg-4 my-2">
+          <label for="traderAddress">Trader Address</label>
+          <input formControlName="traderAddress" type="text" name="traderAddress" id="traderAddress"
+            class="form-control" [ngClass]="{'is-invalid': submitted && traderAddress?.errors,
+                  'is-valid': !traderAddress?.errors}" required>
+          <div *ngIf="traderAddress?.invalid && (traderAddress?.dirty || traderAddress?.touched)" class="text-danger">
+            <div *ngIf="traderAddress?.errors?.['required']">
+              trader Address is required.
+            </div>
+            <div *ngIf="traderAddress?.errors?.['minlength']">
+              trader Address length must be greater than 3 characters.
+            </div>
+            <div *ngIf="customerName?.errors?.['pattern']">
+              invalid trader Address.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary float-end">Save</button>
+      </div>
+    </form>
+  </div>
+
+</app-homepage>

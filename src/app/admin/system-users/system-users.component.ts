@@ -12,6 +12,10 @@ import {UserAccount} from "../../models/user-account";
 export class SystemUsersComponent implements OnInit {
 
   newAccount: UserAccount;
+  alertType: string = "";
+  message:string = "";
+  isVisible: boolean = false;
+
   constructor(private accountService:AccountService , private router:Router) {
     this.newAccount = new UserAccount();
   }
@@ -43,7 +47,6 @@ export class SystemUsersComponent implements OnInit {
   }
 
   createUser(fullName:string,userName:string,email:string,password:string,permissionId:number){
-    console.log(permissionId);
     this.newAccount.full_Name = fullName;
     this.newAccount.email = email;
     this.newAccount.userName = userName;
@@ -51,10 +54,22 @@ export class SystemUsersComponent implements OnInit {
     this.newAccount.permissionId = permissionId;
     this.accountService.registerNewUser(this.newAccount).subscribe(
       (data)=>{
-        // this.router.navigate(["/login"])
+        // check if created successfully
+        console.log(data);
+        this.isVisible = true;
+        this.alertType = "success"
+        this.message = "User created Successfully";
       },
       (err)=>{
-        console.log(err)
+        console.log(err);
+        this.isVisible = true;
+        this.alertType = "danger"
+        if(!err){
+          for (let er of err.error){
+            const {description} = er
+            this.message += `${description}\n`;
+          }
+        }
       }
     )
 

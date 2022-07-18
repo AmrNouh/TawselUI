@@ -46,6 +46,8 @@ export class LoginComponent implements OnInit {
         this.isLogining=true;
         localStorage.setItem('token',data.token)
         localStorage.setItem('userName',data.userName)
+        localStorage.setItem('userId',data.userId)
+
 
         console.log(data.token)
         setTimeout(() => {

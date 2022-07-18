@@ -22,13 +22,114 @@
             </div>
           </td>
           <td>
-            <a href="/settings/governments/{{government.id}}" class="btn px-2 py-0 bg-success text-light text-decoration-none">
+            <!-- <a href="/settings/governments/{{government.id}}" class="btn px-2 py-0 bg-success text-light text-decoration-none">
               <i class="fas fa-pencil-alt"></i>
-            </a>
+            </a> -->
+            <button  
+             class="btn px-2 py-0 bg-success text-light text-decoration-none"
+             data-bs-toggle="modal" data-bs-target="#governmentEdit"
+             (click)="updateGovernment(government.id)"
+             >
+              <i class="fas fa-pencil-alt"></i>
+            </button>
+            <button class="btn px-2 py-0 bg-danger mx-2 text-light text-decoration-none" 
+            (click)="deleteGovernment(government.id)"
+            
+            >
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            </button>
           </td>
         </tr>
         </tbody>
       </table>
     </div>
   </div>
+
+
+
+
+<button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#AddNewGov">
+  Add New
+</button>
 </app-homepage>
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="governmentEdit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Edit Government</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="governmentName" class="form-label">Government Name</label>
+            <input type="text" name="governmentName" [(ngModel)]="UpdatedGovernoment.name" class="form-control" id="governmentName" >
+          
+          </div>
+          <div class="mb-3  form-check form-switch">
+            <input class="form-check-input" name="governmentStatus" type="checkbox" role="switch" [(ngModel)]="UpdatedGovernoment.status" >
+            <label for="governmentStatus" class="form-label">Government Status</label>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="saveUpdate()" >Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="AddNewGov" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Add New Government </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="validation" #NewGov="ngForm">
+          <div class="mb-3">
+            <label for="governmentName" class="form-label">Government Name</label>
+            <input type="text" #govname formControlName="Name"  [(ngModel)]="newGovernoment.name" name="governmentName"  class="form-control" id="governmentName" >
+            <div *ngIf="GovName && GovName.invalid && GovName.touched && !govname.value" class="text-danger">
+               Name Required
+            </div>
+            <div *ngIf="GovName && govname.value && GovName.invalid" class="text-danger">
+               Name isn't Valid
+            </div>
+          </div>
+          <div class="mb-3  form-check form-switch">
+            <input class="form-check-input" name="governmentStatus" type="checkbox" role="switch" [(ngModel)]="newGovernoment.status" >
+            <label for="governmentStatus" class="form-label">Government Status</label>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="validation.invalid" (click)="saveNew()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+

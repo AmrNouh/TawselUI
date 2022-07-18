@@ -8,10 +8,10 @@ import {Report} from "../models/report";
 })
 export class ReportsService {
 
-  private BaseUrl = "https://jsonplaceholder.typicode.com";
+  private BaseUrl = "https://localhost:44372/api";
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<Report[]>{
-    return this.http.get<Report[]>(`${this.BaseUrl}/users`);
+    return this.http.get<Report[]>(`${this.BaseUrl}/Reports`);
   }
 }

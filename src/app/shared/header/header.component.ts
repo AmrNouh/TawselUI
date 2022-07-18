@@ -1,4 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +8,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() {}
+  constructor(private myrouter:Router) {}
 
  userName=localStorage.getItem("userName")
   left: string = '0';
@@ -20,5 +21,10 @@ export class HeaderComponent implements OnInit {
     console.log(this.left);
     this.left = this.left === "260px" ? "0" : "260px";
     this.changeLeft.emit(this.left);
+  }
+  logout()
+  {
+    localStorage.removeItem("token");
+    this.myrouter.navigate(["/login"])
   }
 }

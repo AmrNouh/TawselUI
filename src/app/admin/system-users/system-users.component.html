@@ -2,8 +2,13 @@
 <div class="container">
   <div class="row">
     <form [formGroup]="registration" #NewUser="ngForm" class="row g-3">
-      <h4 class="page-title">Add New User</h4>
-
+      <div class="row">
+      <h4 class="page-title col-8">Add New User</h4>
+      <div *ngIf="isVisible" class="alert alert-{{alertType}} col-4 alert-dismissible fade show" role="alert">
+        <strong>{{message}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      </div>
       <div class="col-lg-4 col-md-6 col-sm-12">
         <label for="inputfullname" class="form-label">Full Name</label>
         <input type="text" formControlName="fullname" #fullName class="form-control" id="inputfullname" placeholder="Full Name">

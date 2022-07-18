@@ -3,6 +3,8 @@ import {Order} from "../../models/order";
 import {OrderService} from "../../services/order.service";
 import {Subject} from "rxjs";
 import {DataTableDirective} from 'angular-datatables';
+import {Status} from "../../models/status";
+import {StatusService} from "../../services/status.service";
 
 @Component({
   selector: 'app-orders-viewer',
@@ -11,7 +13,8 @@ import {DataTableDirective} from 'angular-datatables';
 })
 export class OrdersViewerComponent implements OnInit,OnDestroy {
 
-  status: string = "All";
+  statuses: Status[] = [];
+  statusId: number = 0;
   orders: Order[] = [];
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
@@ -19,25 +22,26 @@ export class OrdersViewerComponent implements OnInit,OnDestroy {
   @ViewChild(DataTableDirective, {static: false})
   datatableElement: any = DataTableDirective;
 
-  constructor(private orderService: OrderService) {
+  constructor(private orderService: OrderService,private statusService : StatusService) {
   }
 
   ngOnInit(): void {
-    this.getFilteredOrders(this.status);
+    this.getFilteredOrders(this.statusId);
+    this.getAllStatuses();
   }
 
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
   }
 
-  public getFilteredOrders(filter: string) {
-    if (filter.toLowerCase() === 'all') {
+  public getFilteredOrders(filter: number) {
+    if (filter === 0) {
       this.getAllOrders();
     } else {
       this.orderService
         .filterByStatus(filter)
         .subscribe((data) => {
-          this.orders = data
+          // this.orders = data
           this.dtTrigger.next(data);
         })
     }
@@ -47,8 +51,18 @@ export class OrdersViewerComponent implements OnInit,OnDestroy {
     this.orderService
       .getAll()
       .subscribe((data) => {
-        this.orders = data
+        // this.orders = data
         this.dtTrigger.next(data);
+      })
+  }
+
+  private getAllStatuses() {
+    this.statusService
+      .getAll()
+      .subscribe((data) => {
+        this.statuses = data;
+      },(errors) => {
+        console.log(errors)
       })
   }
 }
