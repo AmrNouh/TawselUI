@@ -32,7 +32,7 @@ export class NewcityComponent implements OnInit {
       name: new UntypedFormControl('', [Validators.required, Validators.minLength(3), Validators.pattern('[a-z|A-Z]+')]),
       shippingCost: new UntypedFormControl('', [Validators.required, Validators.min(0)])
     });
-this.getallGovernments()
+
 
   }
 
