@@ -3,8 +3,8 @@ export class City {
 
   constructor(
     public id : number = 0,
-    public governmentId:number,
-    public name:string,
+    public governmentId:number=0,
+    public name:string="",
     public costpercity:number=0
   ) {
   }

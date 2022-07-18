@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { City } from '../models/city';
+import { NewCity } from '../models/new-city';
 
 @Injectable({
   providedIn: 'root'
@@ -27,9 +28,12 @@ export class CityService {
     return this.http.get<City>(`${this.BASEURL}/Cities/${id}`,this.requestOptions);
   }
 
-  insert(city:City): void {
-    this.http.post<City>(`${this.BASEURL}/Cities`,city,this.requestOptions);
+  insert(city:City) {
+   return this.http.post<City>(`${this.BASEURL}/Cities`,city,this.requestOptions);
   }
+  insertNew(city:NewCity) {
+    return this.http.post<NewCity>(`${this.BASEURL}/Cities`,city,this.requestOptions);
+   }
 
   update(id:number,city:City): void {
     this.http.put<City>(`${this.BASEURL}/Cities/${id}`,city,this.requestOptions);
