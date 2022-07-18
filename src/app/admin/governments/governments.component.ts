@@ -3,6 +3,8 @@ import {Government} from "../../models/government";
 import {Subject} from "rxjs";
 import {GovernmentService} from "../../services/government.service";
 import {data} from "jquery";
+import { NewGov } from 'src/app/models/new-gov';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-governments',
@@ -15,6 +17,9 @@ export class GovernmentsComponent implements OnInit, OnDestroy {
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
 UpdatedGovernoment:Government=new Government();
+newGovernoment:NewGov=new NewGov();
+
+
   constructor(private governmentService: GovernmentService) {
   }
 
@@ -25,6 +30,20 @@ UpdatedGovernoment:Government=new Government();
   ngOnInit(): void {
     this.getAllGovernments();
   }
+
+  validation=new UntypedFormGroup({
+    Name:new UntypedFormControl("",[Validators.required,Validators.minLength(4),Validators.pattern("^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$")]),
+
+
+  })
+
+
+  get GovName(){
+    return this.validation.get("Name");
+  }
+
+
+
 
   getAllGovernments() {
     this.governmentService
@@ -65,4 +84,45 @@ UpdatedGovernoment:Government=new Government();
       }
     )
   }
+
+  saveNew(){
+
+  
+ console.log(this.newGovernoment);
+ this.governmentService.insert(this.newGovernoment).subscribe(
+  (data)=>{
+    console.log(data);
+    alert("Government Added Successfully")
+    this.ngOnInit();
+  },
+  (err)=>{
+    console.log(data);
+    alert(" Error Ocured ")
+    
+  }
+ )
+  }
+
+
+
+  deleteGovernment(id:number)
+  {
+    if (confirm("Are you sure to delete this Government")==true)
+    {
+      this.governmentService.delete(id).subscribe(
+        (data)=>{
+          console.log(data);
+          alert("Government Deleted Successfully")
+          this.ngOnInit();
+        },
+        (err)=>{
+          console.log(data);
+          alert(" Error Ocured ")
+          
+        }
+      )
+    }
+  }
+
 }
+

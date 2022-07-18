@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Government} from "../models/government";
 import { City } from '../models/city';
+import { NewGov } from '../models/new-gov';
 
 @Injectable({
   providedIn: 'root'
@@ -31,16 +32,16 @@ export class GovernmentService {
     return this.http.get<City[]>(`${this.BASEURL}/States/cities/${id}`,this.requestOptions)
   }
 
-  insert(government:Government): void {
-    this.http.post<Government>(`${this.BASEURL}/States`,government,this.requestOptions);
+  insert(government:NewGov) {
+return    this.http.post<NewGov>(`${this.BASEURL}/States`,government,this.requestOptions);
   }
 
   update(id:number,government:Government) {
    return this.http.put<Government>(`${this.BASEURL}/States/${id}`,government,this.requestOptions);
   }
 
-  delete(id:number): void{
-    this.http.delete<Government>(`${this.BASEURL}/States/${id}`,this.requestOptions);
+  delete(id:number){
+  return  this.http.delete<Government>(`${this.BASEURL}/States/${id}`,this.requestOptions);
   }
 
 }
